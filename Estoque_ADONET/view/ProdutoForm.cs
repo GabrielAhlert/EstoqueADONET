@@ -23,16 +23,11 @@ namespace Estoque_ADONET.view
             this.tableProduto.Columns[0].DataPropertyName = "cod";
             this.tableProduto.Columns[1].DataPropertyName = "descricao";
             this.tableProduto.Columns[2].DataPropertyName = "estoque";
-            this.tableProduto.Columns[3].DataPropertyName = "custo";
-            this.tableProduto.Columns[4].DataPropertyName = "venda";
-            this.tableProduto.Columns[5].DataPropertyName = "nome";
+            this.tableProduto.Columns[3].DataPropertyName = "venda";
             tableProduto.DataSource = dal.ProdutoDAL.getAllProdutos();
-            popCombo();
+            //popCombo();
         }
-        private void popCombo()
-        {
-            comboFornecedor.DataSource = dal.FornecedorDAL.GetAllFornecedores();
-        }
+
 
         private void BtnGravar_Click(object sender, EventArgs e)
         {
@@ -40,22 +35,55 @@ namespace Estoque_ADONET.view
             {
                 MessageBox.Show(dal.ProdutoDAL.gravar(new poco.Produto(
                 txtDescricao.Text, int.Parse(txtEstoque.Text),
-                float.Parse(txtCusto.Text), float.Parse(txtVenda.Text),
-                (poco.Fornecedor)comboFornecedor.SelectedItem)));
+                float.Parse(txtVenda.Text))));
             }
             catch(Exception ex)
             {
                 Console.WriteLine(ex.ToString());
             }
+            atualizarForm();
         }
 
         private void BtnNovo_Click(object sender, EventArgs e)
         {
-            Console.WriteLine(((poco.Fornecedor)comboFornecedor.SelectedItem).Id);
+            txtDescricao.Text = string.Empty;
+            txtEstoque.Text = string.Empty;
+            txtId.Text = string.Empty;
+            txtVenda.Text = string.Empty;
         }
 
         private void ProdutoForm_Load(object sender, EventArgs e)
         {
+
+        }
+
+        private void BtnCancelar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void TableProduto_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0 || e.ColumnIndex < 0)
+                return;
+            try
+            {
+                txtId.Text = tableProduto.Rows[e.RowIndex].Cells[0].Value.ToString();
+                txtDescricao.Text = tableProduto.Rows[e.RowIndex].Cells[1].Value.ToString();
+                txtEstoque.Text = tableProduto.Rows[e.RowIndex].Cells[2].Value.ToString();
+                txtVenda.Text = tableProduto.Rows[e.RowIndex].Cells[3].Value.ToString();
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+        }
+
+        private void BtnRemover_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show( dal.ProdutoDAL.remove(int.Parse(txtId.Text)));
+            atualizarForm();
 
         }
     }
