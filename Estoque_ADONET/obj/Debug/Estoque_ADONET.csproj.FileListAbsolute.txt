@@ -198,3 +198,4 @@ C:\Users\Windows\Documents\GitHub\EstoqueADONET\Estoque_ADONET\bin\Debug\System.
 C:\Users\Windows\Documents\GitHub\EstoqueADONET\Estoque_ADONET\bin\Debug\System.Threading.Tasks.Extensions.xml
 C:\Users\Windows\Documents\GitHub\EstoqueADONET\Estoque_ADONET\bin\Debug\System.ValueTuple.xml
 C:\Users\Windows\Documents\GitHub\EstoqueADONET\Estoque_ADONET\obj\Debug\Estoque_ADONET.csproj.CopyComplete
+C:\Users\Windows\Documents\GitHub\EstoqueADONET\Estoque_ADONET\obj\Debug\Estoque_ADONET.view.NotaEntradaForm.resources

@@ -52,7 +52,24 @@ namespace Estoque_ADONET.dal
                 return ex.ToString();
             }
         }
-        public static DataTable getAllProdutos()
+        
+        public static List<poco.Produto> getAllProdutos()
+        {
+            var a = new List<poco.Produto>();
+
+            var conn = DBConnection.get();
+            var cmd = new NpgsqlCommand("SELECT cod,descricao,estoque,venda FROM produto", conn);
+            conn.Open();
+            var r = cmd.ExecuteReader();
+            while (r.Read())
+            {
+                a.Add(new poco.Produto(r.GetInt32(0),r.GetString(1),r.GetInt32(2),r.GetDouble(3)));
+            }
+
+            return a;
+        }
+
+        public static DataTable getProdutos()
         {
             try
             {

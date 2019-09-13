@@ -130,6 +130,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="dal\FornecedorDAL.cs" />
+    <Compile Include="dal\NotaEntrada.cs" />
+    <Compile Include="dal\NotaProduto.cs" />
     <Compile Include="dal\ProdutoDAL.cs" />
     <Compile Include="DBConnection.cs" />
     <Compile Include="MainForm.cs">
@@ -139,6 +141,7 @@
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="poco\Fornecedor.cs" />
+    <Compile Include="poco\NotaEntrada.cs" />
     <Compile Include="poco\Produto.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -147,6 +150,12 @@
     </Compile>
     <Compile Include="view\FornecedorForm.Designer.cs">
       <DependentUpon>FornecedorForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="view\NotaEntradaForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="view\NotaEntradaForm.Designer.cs">
+      <DependentUpon>NotaEntradaForm.cs</DependentUpon>
     </Compile>
     <Compile Include="view\ProdutoForm.cs">
       <SubType>Form</SubType>
@@ -168,6 +177,9 @@
     </Compile>
     <EmbeddedResource Include="view\FornecedorForm.resx">
       <DependentUpon>FornecedorForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="view\NotaEntradaForm.resx">
+      <DependentUpon>NotaEntradaForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="view\ProdutoForm.resx">
       <DependentUpon>ProdutoForm.cs</DependentUpon>

@@ -24,7 +24,7 @@ namespace Estoque_ADONET.view
             this.tableProduto.Columns[1].DataPropertyName = "descricao";
             this.tableProduto.Columns[2].DataPropertyName = "estoque";
             this.tableProduto.Columns[3].DataPropertyName = "venda";
-            tableProduto.DataSource = dal.ProdutoDAL.getAllProdutos();
+            tableProduto.DataSource = dal.ProdutoDAL.getProdutos();
             //popCombo();
         }
 

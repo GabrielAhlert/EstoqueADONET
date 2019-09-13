@@ -21,9 +21,22 @@ namespace Estoque_ADONET.poco
             this.precoVenda = precoVenda;
         }
 
+        public Produto(int id, string descricao, int estoque, double precoVenda)
+        {
+            this.id = id;
+            this.descricao = descricao ?? throw new ArgumentNullException(nameof(descricao));
+            this.estoque = estoque;
+            this.precoVenda = precoVenda;
+        }
+
         public int Id { get => id; set => id = value; }
         public string Descricao { get => descricao; set => descricao = value; }
         public int Estoque { get => estoque; set => estoque = value; }
         public double PreçoVenda { get => precoVenda; set => precoVenda = value; }
+
+        public override string ToString()
+        {
+            return this.descricao;
+        }
     }
 }
