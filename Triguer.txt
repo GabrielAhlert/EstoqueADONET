@@ -1,0 +1,14 @@
+CREATE OR REPLACE FUNCTION fun_verifica_estoque() RETURNS "trigger" AS
+$fun_verifica_estoque$
+    BEGIN
+        UPDATE produto
+		SET estoque = ((SELECT estoque FROM produto WHERE cod = NEW.cod_produto) + NEW.quantidade)
+        WHERE cod = NEW.cod_produto;
+		RETURN NEW;
+    END;
+$fun_verifica_estoque$ LANGUAGE plpgsql;
+
+CREATE TRIGGER trg_nota_entrada_produto_ins
+    BEFORE INSERT ON notaentrada_produto
+    FOR EACH ROW
+    EXECUTE PROCEDURE fun_verifica_estoque();

@@ -31,7 +31,7 @@ namespace Estoque_ADONET.dal
             {
                 var conn = DBConnection.get();
                 var cmd = new NpgsqlCommand(
-                    "INSERT INTO notaEntrada (numero, dataemissao, cod_fornecedor)" +
+                    "INSERT INTO notaentrada (numero, dataemissao, cod_fornecedor)" +
                     " VALUES (@a,@b,@c)", conn);
                 cmd.Parameters.AddWithValue("a", nota.numero);
                 cmd.Parameters.AddWithValue("b", nota.dataEmissao);

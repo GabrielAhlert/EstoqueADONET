@@ -16,6 +16,7 @@ namespace Estoque_ADONET.view
         {
             InitializeComponent();
             popcombo();
+            popTabela();
         }
 
         private void popcombo()
@@ -23,6 +24,17 @@ namespace Estoque_ADONET.view
             comboForn.DataSource = dal.FornecedorDAL.GetAllFornecedores();
             comboNota.DataSource = dal.NotaEntrada.getAllNotas();
             comboProduto.DataSource = dal.ProdutoDAL.getAllProdutos();
+            
+        }
+        private void popTabela()
+        {
+            try
+            {
+                tabelaProduto.DataSource = dal.NotaProduto.getProdutos(comboNota.SelectedValue.ToString());
+            }catch(Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
         }
 
         private void TxtNome_TextChanged(object sender, EventArgs e)
@@ -32,7 +44,10 @@ namespace Estoque_ADONET.view
 
         private void Button3_Click(object sender, EventArgs e)
         {
-
+            MessageBox.Show(dal.NotaProduto.save((poco.NotaEntrada)comboNota.SelectedItem,
+                (poco.Produto)comboProduto.SelectedItem,Int32.Parse(txtQtdeProduto.Text),
+                double.Parse(txtValorProduto.Text)));
+            popTabela();
         }
 
         private void BtnGravar_Click(object sender, EventArgs e)
@@ -48,6 +63,18 @@ namespace Estoque_ADONET.view
             {
                 MessageBox.Show("Erro!");
             }
+            popTabela();
+        }
+
+        private void Button2_Click(object sender, EventArgs e)
+        {
+            popcombo();
+        }
+
+        private void ComboNota_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //MessageBox.Show(comboNota.SelectedValue.ToString());
+            popTabela();
         }
     }
 }
