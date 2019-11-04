@@ -23,7 +23,7 @@ namespace Estoque_ADONET
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new MainForm());
-            //Application.Run(new view.NotaEntradaForm());
+            //Application.Run(new report.FornecedoresRelForm());
         }
     }
 }

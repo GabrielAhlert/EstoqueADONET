@@ -31,5 +31,20 @@ namespace Estoque_ADONET
         {
             new view.NotaEntradaForm().Show();
         }
+
+        private void FornecedoresToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            new report.FornecedoresRelForm().Show();
+        }
+
+        private void ProdutosToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            new report.ProdutosRelForm().Show();
+        }
+
+        private void ComprasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new report.ComprasRelForm().Show();
+        }
     }
 }
